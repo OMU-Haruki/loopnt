@@ -1,0 +1,6 @@
+src/app/api/projects/route.ts(2,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+src/app/page.tsx(8,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+src/app/projects/[id]/page.tsx(2,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.
+src/components/project/ProjectHeader.tsx(6,23): error TS2307: Cannot find module '@/components/ui/badge' or its corresponding type declarations.
+src/utils/supabase/server.ts(13,30): error TS2339: Property 'getAll' does not exist on type 'Promise<ReadonlyRequestCookies>'.
+src/utils/supabase/server.ts(18,27): error TS2339: Property 'set' does not exist on type 'Promise<ReadonlyRequestCookies>'.

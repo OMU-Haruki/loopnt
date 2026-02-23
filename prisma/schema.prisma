@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String?   @unique
+  name      String?
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Project {
+  id              String           @id @default(uuid())
+  title           String
+  artistName      String?
+  genres          String[]         // Array of genres
+  lyrics          String?          @db.Text
+  memo            String?          @db.Text
+  demoAudioUrl    String?          // Supabase Storage path
+  status          ProjectStatus    @default(ARRANGEMENT)
+  progress        Json?            // e.g. { lyrics: 50, arrangement: 30, mix: 0 }
+  
+  userId          String?
+  user            User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  musicalMetadata MusicalMetadata?
+  songStructures  SongStructure[]
+
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+enum ProjectStatus {
+  ARRANGEMENT
+  MIXING
+  MASTERING
+  COMPLETED
+}
+
+model MusicalMetadata {
+  id              String   @id @default(uuid())
+  projectId       String   @unique
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  bpmMap          Json?    // e.g. [{ value: 120, bar: 1 }, { value: 128, bar: 33 }]
+  keyMap          Json?    // e.g. [{ value: "C", bar: 1 }, { value: "Am", bar: 17 }]
+  timeSignature   Json?    // e.g. [{ value: "4/4", bar: 1 }, { value: "7/8", bar: 49 }]
+  referenceTracks Json?    // e.g. [{ title: "Reference A", url: "https://youtube.com..." }]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model SongStructure {
+  id          String   @id @default(uuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  name        String   // "Intro", "Verse 1", "Chorus"
+  orderIndex  Int
+  memo        String?  @db.Text
+  lengthBars  Int?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

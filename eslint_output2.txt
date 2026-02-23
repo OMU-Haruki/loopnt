@@ -1,0 +1,49 @@
+﻿
+C:\Users\haruk\Documents\Projects\loopnt\src\app\login\page.tsx
+  58:24  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\haruk\Documents\Projects\loopnt\src\app\page.tsx
+  13:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  85:61  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\haruk\Documents\Projects\loopnt\src\components\project\AudioPlayer.tsx
+  12:96  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\haruk\Documents\Projects\loopnt\src\components\project\InfoPanel.tsx
+   23:94  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+   49:50  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\haruk\Documents\Projects\loopnt\src\components\project\InfoPanel.tsx:49:50
+  47 |         if (current && !isLoaded) {
+  48 |             // Only populate state once the project is found
+> 49 |             if (current.musicalMetadata?.bpmMap) setBpmMap(current.musicalMetadata.bpmMap)
+     |                                                  ^^^^^^^^^ Avoid calling setState() directly within an effect
+  50 |             if (current.musicalMetadata?.keyMap) setKeyMap(current.musicalMetadata.keyMap)
+  51 |             if (current.musicalMetadata?.timeSignature) setTimeSignature(current.musicalMetadata.timeSignature)
+  52 |             if (current.musicalMetadata?.referenceTracks) setReferenceTracks(current.musicalMetadata.referenceTracks)  react-hooks/set-state-in-effect
+  119:56  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+  146:56  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+  206:62  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+
+C:\Users\haruk\Documents\Projects\loopnt\src\components\project\ProjectHeader.tsx
+  25:98  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\haruk\Documents\Projects\loopnt\src\components\project\StructureBuilder.tsx
+  25:101  error    Unexpected any. Specify a different type                                                            @typescript-eslint/no-explicit-any
+  42:9    warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/set-state-in-effect')
+
+C:\Users\haruk\Documents\Projects\loopnt\src\store\useStore.ts
+   9:35  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  10:47  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:69  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  13:36  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 16 problems (15 errors, 1 warning)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+
